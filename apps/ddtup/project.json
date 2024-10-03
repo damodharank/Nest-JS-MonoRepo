@@ -1,0 +1,26 @@
+{
+  "name": "ddtup",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ddtup/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "ddtup:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "ddtup:build:development"
+        },
+        "production": {
+          "buildTarget": "ddtup:build:production"
+        }
+      }
+    }
+  }
+}
