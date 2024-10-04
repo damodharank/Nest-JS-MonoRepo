@@ -1,3 +1,13 @@
+input RegisterUserInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+}
+
 type Query {
   getAuthMessage: String
+}
+type Mutation {
+  registerUser(userInput: RegisterUserInput): String
 }
