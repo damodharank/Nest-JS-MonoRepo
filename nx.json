@@ -39,7 +39,8 @@
         "apps/ddtup-e2e/**/*",
         "apps/user-service-e2e/**/*",
         "apps/api-gateway-e2e/**/*",
-        "apps/notification-service-e2e/**/*"
+        "apps/notification-service-e2e/**/*",
+        "apps/auth-service-e2e/**/*"
       ]
     }
   ]

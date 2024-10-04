@@ -119,7 +119,7 @@
   dependencies:
     "@apollographql/graphql-playground-html" "1.6.29"
 
-"@apollo/server@^4.0.0", "@apollo/server@^4.3.2":
+"@apollo/server@^4.0.0", "@apollo/server@^4.11.0", "@apollo/server@^4.3.2":
   version "4.11.0"
   resolved "https://registry.npmjs.org/@apollo/server/-/server-4.11.0.tgz"
   integrity sha512-SWDvbbs0wl2zYhKG6aGLxwTJ72xpqp0awb2lotNpfezd9VcAvzaUizzKQqocephin2uMoaA8MguoyBmgtPzNWw==
