@@ -1,22 +1,15 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { ApolloFederationDriver, ApolloFederationDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { AuthResolver } from './auth/auth.resolver';
-import { AppService } from './app.service';  // Import AuthService
+import { AppService } from './app.service';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      typePaths: ['./**/*.graphql'],
-      playground: false,  // Disable the default playground
-      plugins: [ApolloServerPluginLandingPageLocalDefault()],
-      definitions: {
-        path: join(process.cwd(), 'apps/auth-service/src/graphql/auth.schema.ts'),
-        outputAs: 'class',
-      },
+    GraphQLModule.forRoot<ApolloFederationDriverConfig>({
+      driver: ApolloFederationDriver,
+      autoSchemaFile: join(process.cwd(), 'apps/auth-service/src/graphql/auth-schema.gql'),
     }),
   ],
   providers: [AuthResolver, AppService],
