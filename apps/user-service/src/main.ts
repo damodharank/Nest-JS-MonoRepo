@@ -12,7 +12,11 @@ async function bootstrap() {
   });
 
   await app.listen();
-  console.log('User Service is listening on TCP port 4001');
+  // Create an HTTP application for GraphQL
+  const httpApp = await NestFactory.create(AppModule);
+  await httpApp.listen(4002);  // Running HTTP GraphQL on port 4002
+  console.log('User Service GraphQL is running on http://localhost:4002/graphql');
+
 }
 
 bootstrap();
