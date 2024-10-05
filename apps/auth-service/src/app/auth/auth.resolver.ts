@@ -1,18 +1,19 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { AppService } from '../app.service';
+import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
 import { CreateUserInput } from './dto/create-user.input';
+import { AuthService } from './auth.service';
+import { User } from './user.model';
 
 @Resolver()
 export class AuthResolver {
-  constructor(private readonly authService: AppService) {}
+  constructor(private readonly authService: AuthService) {}
 
-  @Mutation(() => String)
-  registerUser(@Args('createUserInput') createUserInput: CreateUserInput): string {
-    return this.authService.registerUser(createUserInput);
+  @Query(() => [User])
+  async getUsers(): Promise<User[]> {
+    return this.authService.getUsers();
   }
 
-  @Query(() => String)
-  getAuthMessage(): string {
-    return 'Hello from Auth Service Apollo Server!';
+  @Mutation(() => User)
+  async registerUser(@Args('createUserInput') createUserInput: CreateUserInput): Promise<User> {
+    return this.authService.register(createUserInput);
   }
 }

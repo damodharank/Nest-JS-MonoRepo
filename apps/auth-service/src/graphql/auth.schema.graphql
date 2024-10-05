@@ -1,13 +1,19 @@
-input RegisterUserInput {
-  firstName: String!
-  lastName: String!
+type User @key(fields: "id") {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+input CreateUserInput {
+  name: String!
   email: String!
   password: String!
 }
 
 type Query {
-  getAuthMessage: String
+  getUsers: [User!]!
 }
+
 type Mutation {
-  registerUser(userInput: RegisterUserInput): String
+  registerUser(createUserInput: CreateUserInput): User!
 }

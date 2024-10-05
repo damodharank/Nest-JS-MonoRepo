@@ -1,0 +1,20 @@
+type RouteData {
+  id: ID!
+  name: String!
+  location: String!
+  distance: String!
+}
+
+input CreateRouteDataInput {
+  name: String!
+  location: String!
+  distance: String!
+}
+
+type Query {
+  getRouteData: [RouteData!]!
+}
+
+type Mutation {
+  createRouteData(createRouteDataInput: CreateRouteDataInput): RouteData!
+}

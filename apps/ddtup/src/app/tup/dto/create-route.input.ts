@@ -1,13 +1,13 @@
 import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()
-export class CreateUserInput {
+export class CreateRouteInput {
   @Field()
-  username: string;
+  name: string;
 
   @Field()
-  email: string;
+  location: string;
 
   @Field()
-  password: string;
+  destination: string;
 }

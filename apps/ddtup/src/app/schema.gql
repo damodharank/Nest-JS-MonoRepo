@@ -22,12 +22,25 @@ directive @inaccessible on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUM
 
 directive @override(from: String!) on FIELD_DEFINITION
 
+type Route {
+  id: String!
+  name: String!
+  location: String!
+  destination: String!
+}
+
 type Query {
-  rootQuery: String!
+  getRouteData: [Route!]!
 }
 
 type Mutation {
-  rootMutation: String!
+  createRouteData(createRouteInput: CreateRouteInput!): Route!
+}
+
+input CreateRouteInput {
+  name: String!
+  location: String!
+  destination: String!
 }
 
 scalar link__Import

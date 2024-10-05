@@ -22,18 +22,30 @@ directive @inaccessible on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUM
 
 directive @override(from: String!) on FIELD_DEFINITION
 
+type User {
+  id: String!
+  username: String!
+  email: String!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
-  getAuthMessage: String!
+  getUsers: [User!]!
 }
 
 type Mutation {
-  registerUser(createUserInput: CreateUserInput!): String!
+  registerUser(createUserInput: CreateUserInput!): User!
 }
 
 input CreateUserInput {
   username: String!
-  password: String!
   email: String!
+  password: String!
 }
 
 scalar link__Import
